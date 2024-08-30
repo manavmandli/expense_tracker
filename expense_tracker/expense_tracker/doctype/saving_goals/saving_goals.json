@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SA-GO.#####",
+ "creation": "2024-08-30 15:42:27.828316",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "section_break_joeg",
+  "saving_amount",
+  "saved_amount",
+  "what_are_you_saving_for_",
+  "targeted_date",
+  "category"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_break_joeg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "what_are_you_saving_for_",
+   "fieldtype": "Data",
+   "label": "What are you saving for ?"
+  },
+  {
+   "fieldname": "targeted_date",
+   "fieldtype": "Date",
+   "label": "Targeted Date"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "saved_amount",
+   "fieldtype": "Currency",
+   "label": "Saved Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "saving_amount",
+   "fieldtype": "Currency",
+   "label": "Saving Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-30 23:42:20.815046",
+ "modified_by": "Administrator",
+ "module": "Expense Tracker",
+ "name": "Saving Goals",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

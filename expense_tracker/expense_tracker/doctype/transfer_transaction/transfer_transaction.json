@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TF..#####",
+ "creation": "2024-08-30 15:36:02.771831",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "section_break_rlxc",
+  "transfer_type",
+  "amount",
+  "column_break_owcv",
+  "account_from",
+  "account_to",
+  "additional_details_section",
+  "date",
+  "description",
+  "column_break_sbzv",
+  "location",
+  "receipt",
+  "recurring_details_section",
+  "recurring_transaction",
+  "section_break_fbae",
+  "interval",
+  "column_break_ffrz",
+  "recurring_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_break_rlxc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "account_from",
+   "fieldtype": "Link",
+   "label": "Account From",
+   "options": "Account"
+  },
+  {
+   "fieldname": "account_to",
+   "fieldtype": "Link",
+   "label": "Account To",
+   "options": "Account"
+  },
+  {
+   "fieldname": "additional_details_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_sbzv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "receipt",
+   "fieldtype": "Attach",
+   "label": "Receipt"
+  },
+  {
+   "fieldname": "recurring_details_section",
+   "fieldtype": "Section Break",
+   "label": "Recurring Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "recurring_transaction",
+   "fieldtype": "Check",
+   "label": "Recurring Transaction"
+  },
+  {
+   "fieldname": "section_break_fbae",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "interval",
+   "fieldtype": "Select",
+   "label": "Interval",
+   "options": "Monthly\nWeekly\nYearly"
+  },
+  {
+   "fieldname": "column_break_ffrz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recurring_date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "transfer_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Transfer Type",
+   "options": "\nPay\nReceive\nLend\nBorrow",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_owcv",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-30 23:19:51.932270",
+ "modified_by": "Administrator",
+ "module": "Expense Tracker",
+ "name": "Transfer Transaction",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "AC.#####",
+ "creation": "2024-08-30 15:10:57.841547",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "section_break_ldwb",
+  "account_type",
+  "account_name",
+  "column_break_cyuo",
+  "opening_balance",
+  "available_balance",
+  "section_break_wqzr",
+  "receivable",
+  "column_break_ghoj",
+  "payable"
+ ],
+ "fields": [
+  {
+   "fieldname": "account_type",
+   "fieldtype": "Select",
+   "label": "Account Type",
+   "options": "Bank\nOther"
+  },
+  {
+   "fieldname": "account_name",
+   "fieldtype": "Data",
+   "label": "Account Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "opening_balance",
+   "fieldtype": "Currency",
+   "label": "Opening Balance"
+  },
+  {
+   "fieldname": "section_break_wqzr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "description": "Select if you have money in account",
+   "fieldname": "receivable",
+   "fieldtype": "Check",
+   "label": "Receivable"
+  },
+  {
+   "fieldname": "column_break_ghoj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Select if you currently own money to account",
+   "fieldname": "payable",
+   "fieldtype": "Check",
+   "label": "Payable"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_break_ldwb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "available_balance",
+   "fieldtype": "Currency",
+   "label": "Available Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cyuo",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-30 18:22:38.788628",
+ "modified_by": "Administrator",
+ "module": "Expense Tracker",
+ "name": "Account",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
