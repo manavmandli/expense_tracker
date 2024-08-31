@@ -6,7 +6,7 @@ from frappe.model.document import Document
 from frappe.utils import get_last_day, today
 
 
-class Account(Document):
+class UserAccount(Document):
     def validate(self):
         self.update_balance()
 

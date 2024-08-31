@@ -12,7 +12,7 @@ class SavingTransaction(Document):
         self.update_saving()
 
     def update_account(self):
-        account_doc = frappe.get_doc("Account", self.source_account)
+        account_doc = frappe.get_doc("User Account", self.source_account)
         account_doc.available_balance = flt(account_doc.available_balance) - flt(
             self.amount
         )

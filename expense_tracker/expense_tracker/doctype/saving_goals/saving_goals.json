@@ -10,7 +10,7 @@
   "section_break_joeg",
   "saving_amount",
   "saved_amount",
-  "what_are_you_saving_for_",
+  "reason",
   "targeted_date",
   "category"
  ],
@@ -24,11 +24,6 @@
   {
    "fieldname": "section_break_joeg",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "what_are_you_saving_for_",
-   "fieldtype": "Data",
-   "label": "What are you saving for ?"
   },
   {
    "fieldname": "targeted_date",
@@ -51,11 +46,16 @@
    "fieldname": "saving_amount",
    "fieldtype": "Currency",
    "label": "Saving Amount"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "label": "What are you saving for ?"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 23:42:20.815046",
+ "modified": "2024-08-31 17:50:06.612230",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Saving Goals",

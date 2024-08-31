@@ -41,13 +41,13 @@
    "fieldname": "account_from",
    "fieldtype": "Link",
    "label": "Account From",
-   "options": "Account"
+   "options": "User Account"
   },
   {
    "fieldname": "account_to",
    "fieldtype": "Link",
    "label": "Account To",
-   "options": "Account"
+   "options": "User Account"
   },
   {
    "fieldname": "additional_details_section",
@@ -128,7 +128,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 23:19:51.932270",
+ "modified": "2024-08-31 14:39:54.907347",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Transfer Transaction",

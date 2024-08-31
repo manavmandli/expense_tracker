@@ -84,7 +84,7 @@
  "modified": "2024-08-30 18:22:38.788628",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
- "name": "Account",
+ "name": "User Account",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [

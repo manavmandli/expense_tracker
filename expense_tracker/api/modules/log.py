@@ -23,7 +23,7 @@ class log(object):
                 # Save log to Doctype
                 frappe.get_doc(
                     {
-                        "doctype": "POS API Log",
+                        "doctype": "API Log",
                         "timestamp": frappe.utils.now(),
                         "user": user,
                         "ip": ip,
@@ -45,7 +45,7 @@ class log(object):
                 # Save error log to Doctype
                 frappe.get_doc(
                     {
-                        "doctype": "POS API Log",
+                        "doctype": "API Log",
                         "timestamp": frappe.utils.now(),
                         "user": user,
                         "ip": ip,
@@ -82,13 +82,15 @@ class log(object):
 
                 return str(e)
             except Exception as e:
-                frappe.log_error(title="POS Error", message=frappe.get_traceback())
+                frappe.log_error(
+                    title="Expense Tracker Error", message=frappe.get_traceback()
+                )
                 frappe.response["http_status_code"] = 500
 
                 # Save error log to Doctype
                 frappe.get_doc(
                     {
-                        "doctype": "POS API Log",
+                        "doctype": "API Log",
                         "timestamp": frappe.utils.now(),
                         "user": user,
                         "ip": ip,

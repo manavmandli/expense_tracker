@@ -13,13 +13,13 @@ class Transaction(Document):
 
     def update_account_details(self):
         if self.transaction_type == "Expense":
-            account_doc = frappe.get_doc("Account", self.account)
+            account_doc = frappe.get_doc("User Account", self.account)
             account_doc.available_balance = flt(account_doc.available_balance) - flt(
                 self.amount
             )
             account_doc.save()
         elif self.transaction_type == "Income":
-            account_doc = frappe.get_doc("Account", self.account)
+            account_doc = frappe.get_doc("User Account", self.account)
             account_doc.available_balance = flt(account_doc.available_balance) + flt(
                 self.amount
             )

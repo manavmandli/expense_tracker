@@ -42,7 +42,7 @@
    "fieldname": "source_account",
    "fieldtype": "Link",
    "label": "Source Account",
-   "options": "Account"
+   "options": "User Account"
   },
   {
    "fieldname": "saving_goal",
@@ -53,7 +53,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 23:30:39.362876",
+ "modified": "2024-08-31 14:39:55.141788",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Saving Transaction",

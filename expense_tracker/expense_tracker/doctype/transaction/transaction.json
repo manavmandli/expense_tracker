@@ -56,7 +56,7 @@
    "fieldname": "account",
    "fieldtype": "Link",
    "label": "Account",
-   "options": "Account"
+   "options": "User Account"
   },
   {
    "fieldname": "additional_details_section",
@@ -127,7 +127,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 18:16:08.626720",
+ "modified": "2024-08-31 14:39:54.488681",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Transaction",
