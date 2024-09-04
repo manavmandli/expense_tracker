@@ -2,21 +2,11 @@ import frappe
 from expense_tracker.api.auth import Auth
 from expense_tracker.api.modules import (
     log,
-    get_budget,
-    update_budget,
-    create_budget,
-    get_saving_goals,
-    create_saving_goals,
-    update_saving_goals,
-    get_transaction,
-    update_transaction,
-    create_saving_transaction,
-    create_transaction,
-    create_transfer_transaction,
-    get_user_profile,
-    update_user_profile,
-    get_user_settings,
-    update_user_settings,
+    Budget,
+    SavingGoal,
+    Transaction,
+    UserProfile,
+    UserSetting,
 )
 from expense_tracker.api.models import (
     UserModel,
@@ -27,7 +17,7 @@ from expense_tracker.api.models import (
     SavingTransactionModel,
     TransactionModel,
     TransferTransactionModel,
-    UserSetting,
+    UserSettingModel,
 )
 from expense_tracker.api.masters import (
     get_category,
@@ -72,77 +62,77 @@ endpoints = {
     # Budget End Points
     "get_budget": {
         "methods": {"GET"},
-        "function": get_budget,
+        "function": Budget().get_budget,
     },
     "update_budget": {
         "methods": {"PUT"},
-        "function": update_budget,
+        "function": Budget().update_budget,
         "model": BudgetModel,
     },
     "create_budget": {
         "methods": {"POST"},
-        "function": create_budget,
+        "function": Budget().create_budget,
         "model": BudgetModel,
     },
     # Saving End Points
     "get_saving_goals": {
         "methods": {"GET"},
-        "function": get_saving_goals,
+        "function": SavingGoal().get_saving_goals,
     },
     "create_saving_goals": {
         "methods": {"POST"},
-        "function": create_saving_goals,
+        "function": SavingGoal().create_saving_goals,
         "model": SavingGoalsModel,
     },
     "update_saving_goals": {
         "methods": {"PUT"},
-        "function": update_saving_goals,
+        "function": SavingGoal().update_saving_goals,
         "model": SavingGoalsModel,
     },
     # Transaction End-Points
     "get_transaction": {
         "methods": {"GET"},
-        "function": get_transaction,
+        "function": Transaction().get_transaction,
     },
     "update_transaction": {
         "methods": {"PUT"},
-        "function": update_transaction,
+        "function": Transaction().update_transaction,
         # "model": SavingGoalsModel,(pending due to confusion)
     },
     "create_saving_transaction": {
         "methods": {"POST"},
-        "function": create_saving_transaction,
+        "function": Transaction().create_saving_transaction,
         "model": SavingTransactionModel,
     },
     "create_transaction": {
         "methods": {"POST"},
-        "function": create_transaction,
+        "function": Transaction().create_transaction,
         "model": TransactionModel,
     },
     "create_transfer_transaction": {
         "methods": {"POST"},
-        "function": create_transfer_transaction,
+        "function": Transaction().create_transfer_transaction,
         "model": TransferTransactionModel,
     },
     # User Profile End Points
     "get_user_profile": {
         "methods": {"GET"},
-        "function": get_user_profile,
+        "function": UserProfile().get_user_profile,
     },
     "update_user_profile": {
         "methods": {"PUT"},
-        "function": update_user_profile,
+        "function": UserProfile().update_user_profile,
         "model": UserModel,
     },
     # User Settings End Points
     "get_user_settings": {
         "methods": {"GET"},
-        "function": get_user_settings,
+        "function": UserSetting().get_user_settings,
     },
     "update_user_settings": {
         "methods": {"PUT"},
-        "function": update_user_settings,
-        "model": UserSetting,
+        "function": UserSetting().update_user_settings,
+        "model": UserSettingModel,
     },
 }
 

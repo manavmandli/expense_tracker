@@ -66,7 +66,7 @@ class TransferTransactionModel(BaseModel):
     recurring_date: str
 
 
-class UserSetting(BaseModel):
+class UserSettingModel(BaseModel):
     currency: str
     country: str
     amount_format: int
