@@ -55,7 +55,7 @@ class Transaction:
     def create_transaction(self, data: TransactionModel):
         transaction_data = {
             "doctype": "Transaction",
-            "user": self.user,
+            "user": frappe.session.user,
             "amount": data.amount,
             "transaction_type": data.transaction_type,
             "category": data.category,
@@ -68,6 +68,15 @@ class Transaction:
             "recurring_date": data.recurring_date,
             "recurring_time": data.recurring_time,
         }
+        if data.recurring_transaction:
+            if not data.interval:
+                frappe.throw(_("Interval can not be blank"))
+            if data.interval == "Daily":
+                if not data.recurring_time:
+                    frappe.throw(_("Time Can not be blank"))
+            else:
+                frappe.throw(_("Date and Time Can not be Blank"))
+
         transaction_doc = frappe.get_doc(transaction_data)
         if "file" in frappe.request.files:
             file = upload_file()
