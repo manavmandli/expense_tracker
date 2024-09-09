@@ -22,12 +22,14 @@
   {
    "fieldname": "currency",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Currency",
    "options": "Currency"
   },
   {
    "fieldname": "country",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Country",
    "options": "Country"
   },
@@ -35,12 +37,13 @@
    "description": "Set Decimal Place",
    "fieldname": "amount_format",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Amount Format"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 16:00:00.149850",
+ "modified": "2024-09-06 12:49:13.973551",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "User Settings",

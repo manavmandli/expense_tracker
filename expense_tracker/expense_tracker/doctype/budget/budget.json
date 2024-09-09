@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "BUD.#####",
+ "autoname": "format:{YY}-BUD-{#####}",
  "creation": "2024-08-30 15:44:44.485572",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -17,7 +17,8 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_pqtv",
@@ -26,28 +27,34 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Category",
-   "options": "Category"
+   "options": "Category",
+   "reqd": 1
   },
   {
    "fieldname": "spent_amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Spent Amount",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 00:05:56.389544",
+ "modified": "2024-09-06 12:38:26.759799",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Budget",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

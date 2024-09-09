@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "SA-GO.#####",
+ "autoname": "SG.#####",
  "creation": "2024-08-30 15:42:27.828316",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -19,7 +19,8 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_joeg",
@@ -28,34 +29,42 @@
   {
    "fieldname": "targeted_date",
    "fieldtype": "Date",
-   "label": "Targeted Date"
+   "in_list_view": 1,
+   "label": "Targeted Date",
+   "reqd": 1
   },
   {
    "fieldname": "category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Category",
-   "options": "Category"
+   "options": "Category",
+   "reqd": 1
   },
   {
    "fieldname": "saved_amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Saved Amount",
    "read_only": 1
   },
   {
    "fieldname": "saving_amount",
    "fieldtype": "Currency",
-   "label": "Saving Amount"
+   "in_list_view": 1,
+   "label": "Saving Amount",
+   "reqd": 1
   },
   {
    "fieldname": "reason",
    "fieldtype": "Data",
-   "label": "What are you saving for ?"
+   "label": "What are you saving for ?",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 17:50:06.612230",
+ "modified": "2024-09-05 23:52:57.696687",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Saving Goals",

@@ -8,6 +8,12 @@ class UserModel(BaseModel):
     password: str
 
 
+class ForgetPwdModel(BaseModel):
+    mobile_no: str
+    otp: str
+    new_password: str
+
+
 class CategoryModel(BaseModel):
     category_name: str
     category_type: str
@@ -46,11 +52,12 @@ class TransactionModel(BaseModel):
     category: str
     account: str
     date: str
-    description: str
     location: str
+    description: str
     recurring_transaction: bool
     interval: str
     recurring_date: str
+    recurring_time: str
 
 
 class TransferTransactionModel(BaseModel):

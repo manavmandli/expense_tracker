@@ -11,7 +11,7 @@ class TransferTransaction(Document):
         self.update_account_details()
 
     def update_account_details(self):
-        if self.transfer_transaction_type:
+        if self.transfer_type:
             account_from = frappe.get_doc("User Account", self.account_from)
             account_from.available_balance = flt(account_from.available_balance) - flt(
                 self.amount

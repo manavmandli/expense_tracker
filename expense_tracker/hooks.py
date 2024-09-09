@@ -133,23 +133,14 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"expense_tracker.tasks.all"
-# 	],
-# 	"daily": [
-# 		"expense_tracker.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"expense_tracker.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"expense_tracker.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"expense_tracker.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    "daily": [
+        "expense_tracker.schedule_event.recurring_transaction.create_transaction"
+    ],
+    "hourly": [
+        "expense_tracker.schedule_event.recurring_transaction.create_transaction"
+    ],
+}
 
 # Testing
 # -------
@@ -226,4 +217,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

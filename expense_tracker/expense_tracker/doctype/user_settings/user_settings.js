@@ -1,8 +1,8 @@
 // Copyright (c) 2024, Manav Mandli and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("User Settings", {
-// 	refresh(frm) {
-
-// 	},
-// });
+frappe.ui.form.on("User Settings", {
+  refresh(frm) {
+    frm.set_value("user", frappe.session.user);
+  },
+});

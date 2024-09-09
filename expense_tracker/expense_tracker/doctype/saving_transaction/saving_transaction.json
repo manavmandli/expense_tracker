@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{YY}-ST-{#####}",
  "creation": "2024-08-30 23:27:24.982485",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -18,7 +19,8 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_lquh",
@@ -27,12 +29,17 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "date",
    "fieldtype": "Datetime",
-   "label": "Date"
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_ahuv",
@@ -41,22 +48,27 @@
   {
    "fieldname": "source_account",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Source Account",
-   "options": "User Account"
+   "options": "User Account",
+   "reqd": 1
   },
   {
    "fieldname": "saving_goal",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Saving Goal",
-   "options": "Saving Goals"
+   "options": "Saving Goals",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 14:39:55.141788",
+ "modified": "2024-09-06 00:16:23.464712",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Saving Transaction",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

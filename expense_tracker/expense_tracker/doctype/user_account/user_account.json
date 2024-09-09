@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "AC.#####",
+ "autoname": "format:{YY}-AC-{#####}",
  "creation": "2024-08-30 15:10:57.841547",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -22,19 +22,25 @@
   {
    "fieldname": "account_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Account Type",
-   "options": "Bank\nOther"
+   "options": "\nBank\nOther",
+   "reqd": 1
   },
   {
    "fieldname": "account_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Account Name",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "opening_balance",
    "fieldtype": "Currency",
-   "label": "Opening Balance"
+   "in_list_view": 1,
+   "label": "Opening Balance",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_wqzr",
@@ -62,7 +68,8 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_ldwb",
@@ -71,6 +78,7 @@
   {
    "fieldname": "available_balance",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Available Balance",
    "read_only": 1
   },
@@ -81,11 +89,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 18:22:38.788628",
+ "modified": "2024-09-06 12:47:23.488946",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "User Account",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

@@ -1,12 +1,14 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "TS.#####",
+ "autoname": "format:{YY}-T-{#####}",
  "creation": "2024-08-30 15:33:47.728604",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "user",
+  "column_break_xtew",
+  "is_recurrence",
   "section_break_uzzq",
   "amount",
   "transaction_type",
@@ -24,14 +26,17 @@
   "section_break_fwii",
   "interval",
   "column_break_ndhf",
-  "recurring_date"
+  "recurring_date",
+  "column_break_qkob",
+  "recurring_time"
  ],
  "fields": [
   {
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_uzzq",
@@ -40,13 +45,17 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
   },
   {
    "fieldname": "category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Category",
-   "options": "Category"
+   "options": "Category",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_afrc",
@@ -55,8 +64,10 @@
   {
    "fieldname": "account",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Account",
-   "options": "User Account"
+   "options": "User Account",
+   "reqd": 1
   },
   {
    "fieldname": "additional_details_section",
@@ -66,7 +77,9 @@
   {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "description",
@@ -104,34 +117,64 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.recurring_transaction ==1",
    "fieldname": "interval",
    "fieldtype": "Select",
    "label": "Interval",
-   "options": "Monthly\nWeekly\nYearly"
+   "mandatory_depends_on": "eval:doc.recurring_transaction ==1",
+   "options": "\nDaily\nMonthly\nWeekly"
   },
   {
    "fieldname": "column_break_ndhf",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "recurring_date",
-   "fieldtype": "Datetime",
-   "label": "Date"
-  },
-  {
    "fieldname": "transaction_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Transaction Type",
-   "options": "\nExpense\nIncome"
+   "options": "\nExpense\nIncome",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xtew",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_recurrence",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Recurrence",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.recurring_transaction ==1",
+   "fieldname": "recurring_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "mandatory_depends_on": "eval:doc.interval == \"Monthly\" || doc.interval == \"Weekly\"  ",
+   "read_only_depends_on": "eval:doc.interval == \"Daily\""
+  },
+  {
+   "depends_on": "eval:doc.recurring_transaction ==1",
+   "fieldname": "recurring_time",
+   "fieldtype": "Time",
+   "label": "Time",
+   "mandatory_depends_on": "eval:doc.recurring_transaction ==1"
+  },
+  {
+   "fieldname": "column_break_qkob",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 14:39:54.488681",
+ "modified": "2024-09-07 19:14:18.466669",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Transaction",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

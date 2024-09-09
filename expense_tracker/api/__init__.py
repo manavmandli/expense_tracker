@@ -10,6 +10,7 @@ from expense_tracker.api.modules import (
 )
 from expense_tracker.api.models import (
     UserModel,
+    ForgetPwdModel,
     CategoryModel,
     UserAccountModel,
     BudgetModel,
@@ -19,12 +20,7 @@ from expense_tracker.api.models import (
     TransferTransactionModel,
     UserSettingModel,
 )
-from expense_tracker.api.masters import (
-    get_category,
-    create_category,
-    get_user_accounts,
-    create_user_account,
-)
+from expense_tracker.api.masters import Category, UserAccount
 from bs4 import BeautifulSoup
 
 
@@ -39,24 +35,33 @@ endpoints = {
         "function": Auth().create_account,
         "model": UserModel,
     },
+    "send_otp": {
+        "methods": {"POST"},
+        "function": Auth().send_otp,
+    },
+    "validate_otp": {
+        "methods": {"POST"},
+        "function": Auth().validate_otp,
+        "model": ForgetPwdModel,
+    },
     # Category End Points
     "get_category": {
         "methods": {"GET"},
-        "function": get_category,
+        "function": Category().get_category,
     },
     "create_category": {
         "methods": {"POST"},
-        "function": create_category,
+        "function": Category().create_category,
         "model": CategoryModel,
     },
     # User Account End Points
     "get_user_accounts": {
         "methods": {"GET"},
-        "function": get_user_accounts,
+        "function": UserAccount().get_user_accounts,
     },
     "create_user_account": {
         "methods": {"POST"},
-        "function": create_user_account,
+        "function": UserAccount().create_user_account,
         "model": UserAccountModel,
     },
     # Budget End Points

@@ -1,12 +1,14 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "TF..#####",
+ "autoname": "format:{YY}-TF-{#####}",
  "creation": "2024-08-30 15:36:02.771831",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "user",
+  "column_break_crgy",
+  "is_recurrence",
   "section_break_rlxc",
   "transfer_type",
   "amount",
@@ -24,14 +26,17 @@
   "section_break_fbae",
   "interval",
   "column_break_ffrz",
-  "recurring_date"
+  "recurring_date",
+  "column_break_iwhq",
+  "recurring_time"
  ],
  "fields": [
   {
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_rlxc",
@@ -40,14 +45,18 @@
   {
    "fieldname": "account_from",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Account From",
-   "options": "User Account"
+   "options": "User Account",
+   "reqd": 1
   },
   {
    "fieldname": "account_to",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Account To",
-   "options": "User Account"
+   "options": "User Account",
+   "reqd": 1
   },
   {
    "fieldname": "additional_details_section",
@@ -57,7 +66,8 @@
   {
    "fieldname": "date",
    "fieldtype": "Datetime",
-   "label": "Date"
+   "label": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "description",
@@ -94,24 +104,32 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.recurring_transaction ==1",
    "fieldname": "interval",
    "fieldtype": "Select",
    "label": "Interval",
-   "options": "Monthly\nWeekly\nYearly"
+   "mandatory_depends_on": "eval:doc.recurring_transaction ==1",
+   "options": "\nDaily\nMonthly\nWeekly"
   },
   {
    "fieldname": "column_break_ffrz",
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.recurring_transaction ==1",
    "fieldname": "recurring_date",
-   "fieldtype": "Datetime",
-   "label": "Date"
+   "fieldtype": "Date",
+   "label": "Date",
+   "mandatory_depends_on": "eval:doc.interval == \"Monthly\" || doc.interval == \"Weekly\"  ",
+   "read_only_depends_on": "eval:doc.interval == \"Daily\""
   },
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "transfer_type",
@@ -124,15 +142,38 @@
   {
    "fieldname": "column_break_owcv",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_crgy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_recurrence",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Recurrence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_iwhq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.recurring_transaction ==1",
+   "fieldname": "recurring_time",
+   "fieldtype": "Time",
+   "label": "Time",
+   "mandatory_depends_on": "eval:doc.recurring_transaction ==1"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 14:39:54.907347",
+ "modified": "2024-09-07 19:16:40.557528",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Transfer Transaction",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

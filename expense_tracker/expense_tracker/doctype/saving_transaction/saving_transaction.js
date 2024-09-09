@@ -2,6 +2,9 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Saving Transaction", {
+  refresh(frm) {
+    frm.set_value("user", frappe.session.user);
+  },
   user(frm) {
     frm.set_query("source_account", function () {
       return {

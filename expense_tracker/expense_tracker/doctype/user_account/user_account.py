@@ -12,7 +12,11 @@ class UserAccount(Document):
 
     def update_balance(self):
         if self.is_new():
-            self.available_balance = self.opening_balance
+            if self.payable:
+                self.opening_balance = -abs(self.opening_balance)
+                self.available_balance = self.opening_balance
+            else:
+                self.available_balance = abs(self.opening_balance)
 
         if today() == get_last_day(today()):
             self.opening_balance = self.available_balance

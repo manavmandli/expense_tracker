@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from expense_tracker.api.models import UserModel
+from expense_tracker.api.models import UserModel, ForgetPwdModel
 
 
 class Auth:
@@ -71,3 +71,35 @@ class Auth:
             api_secret = user_details.get_password("api_secret")
             api_key = user_details.get("api_key")
         return {"api_secret": api_secret, "api_key": api_key}
+
+    def id_generator_otp(self):
+        return "123456"
+
+    def send_otp(self, mobile_no):
+        if not mobile_no:
+            frappe.throw(_("Mobile No is required"))
+        user_otp_doc = frappe.db.exists("User OTP", {"mobile_no": mobile_no})
+        if user_otp_doc:
+            frappe.db.sql("""delete from `tabUser OTP` where mobile_no=%s""", mobile_no)
+        otp_code = self.id_generator_otp()
+        frappe.response["message"] = "OTP Sent on registered mobile no"
+        userOTP = frappe.get_doc(
+            dict(doctype="User OTP", mobile_no=mobile_no, otp=otp_code)
+        ).insert(ignore_permissions=True)
+
+    def validate_otp(self, data: ForgetPwdModel):
+        otp_exists = frappe.db.exists(
+            "User OTP", {"mobile_no": data.mobile_no, "otp": data.otp}
+        )
+        if not otp_exists:
+            frappe.throw(_("Invalid OTP"))
+
+        user_doc = frappe.get_doc("User", {"mobile_no": data.mobile_no})
+
+        if not data.new_password:
+            frappe.throw(_("Password can not be blank"))
+
+        user_doc.new_password = data.new_password
+        user_doc.save(ignore_permissions=True)
+
+        frappe.response["message"] = "Password Updated Successfully"

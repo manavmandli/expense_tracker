@@ -21,57 +21,67 @@
   {
    "fieldname": "timestamp",
    "fieldtype": "Datetime",
+   "in_list_view": 1,
    "label": "Timestamp"
   },
   {
    "fieldname": "user",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "User"
   },
   {
    "fieldname": "ip",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "IP"
   },
   {
    "fieldname": "function_name",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "Function Name"
   },
   {
    "fieldname": "module",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "Module"
   },
   {
    "fieldname": "arguments",
    "fieldtype": "Long Text",
+   "in_list_view": 1,
    "label": "Arguments"
   },
   {
    "fieldname": "kwarguments",
    "fieldtype": "Long Text",
+   "in_list_view": 1,
    "label": "kwarguments"
   },
   {
    "fieldname": "result",
    "fieldtype": "Code",
+   "in_list_view": 1,
    "label": "Result"
   },
   {
    "fieldname": "exception",
    "fieldtype": "Code",
+   "in_list_view": 1,
    "label": "Exception"
   },
   {
    "fieldname": "http_status_code",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "http_status_code"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-31 10:24:28.644265",
+ "modified": "2024-09-06 12:33:56.863555",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "API Log",
