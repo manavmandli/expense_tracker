@@ -44,6 +44,10 @@ endpoints = {
         "function": Auth().validate_otp,
         "model": ForgetPwdModel,
     },
+    "logout": {
+        "methods": {"POST"},
+        "function": Auth().logout,
+    },
     # Category End Points
     "get_category": {
         "methods": {"GET"},

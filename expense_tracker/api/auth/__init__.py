@@ -1,6 +1,7 @@
 import frappe
 from frappe import _
 from expense_tracker.api.models import UserModel, ForgetPwdModel
+from frappe.sessions import clear_sessions
 
 
 class Auth:
@@ -57,6 +58,13 @@ class Auth:
         if frappe.response.get("message") == "Logged In":
             frappe.response["user"] = self.user
             frappe.response["key_details"] = self.generate_key(login_manager.user)
+
+    def logout(self):
+        if frappe.session.user == "Guest":
+            frappe.throw(_("Login is Required for Logout"))
+        frappe.local.login_manager.logout()
+        clear_sessions(frappe.session.user, keep_current=False, force=True)
+        frappe.response["message"] = _("Successfully logged out.")
 
     def generate_key(self, user):
         user_details = frappe.get_doc("User", user)

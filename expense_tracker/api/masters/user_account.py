@@ -7,7 +7,7 @@ class UserAccount:
     def __init__(self) -> None:
         self.user = frappe.session.user
 
-    def get_user_accounts():
+    def get_user_accounts(self):
         """Retrieve all User Accounts."""
         user_account_doc = remove_default_fields(
             frappe.get_all(

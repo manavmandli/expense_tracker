@@ -8,7 +8,7 @@ class Category:
     def __init__(self) -> None:
         self.user = frappe.session.user
 
-    def get_category():
+    def get_category(self):
         """Retrieve all categories."""
 
         categories = remove_default_fields(

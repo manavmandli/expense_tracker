@@ -15,6 +15,9 @@ class Transaction:
 
     def get_transaction(self):
         """this will get all types of transaction"""
+        if frappe.session.user == "Guest":
+            frappe.throw(_("You must be logged in first"))
+
         transaction = []
 
         # get all Transaction
@@ -53,6 +56,9 @@ class Transaction:
         pass
 
     def create_transaction(self, data: TransactionModel):
+        if frappe.session.user == "Guest":
+            frappe.throw(_("You must be logged in to create a transaction."))
+
         transaction_data = {
             "doctype": "Transaction",
             "user": frappe.session.user,
@@ -65,20 +71,20 @@ class Transaction:
             "description": data.description,
             "recurring_transaction": data.recurring_transaction,
             "interval": data.interval,
-            "recurring_date": data.recurring_date,
-            "recurring_time": data.recurring_time,
+            "recurring_date": data.recurring_date or None,
+            "recurring_time": data.recurring_time or None,
         }
-        if data.recurring_transaction:
-            if not data.interval:
-                frappe.throw(_("Interval can not be blank"))
-            if data.interval == "Daily":
-                if not data.recurring_time:
-                    frappe.throw(_("Time Can not be blank"))
-            else:
-                frappe.throw(_("Date and Time Can not be Blank"))
+        if transaction_data["recurring_transaction"]:
+            if not transaction_data.get("interval"):
+                frappe.throw(_("Interval cannot be blank for a recurring transaction"))
+            if transaction_data["interval"] == "Daily" and not transaction_data.get(
+                "recurring_time"
+            ):
+                frappe.throw(_("Recurring Time cannot be blank for Daily interval"))
 
         transaction_doc = frappe.get_doc(transaction_data)
-        if "file" in frappe.request.files:
+
+        if "receipt" in frappe.request.files:
             file = upload_file()
             file.update(
                 {
@@ -88,9 +94,12 @@ class Transaction:
             )
             file.save(ignore_permissions=True)
             transaction_doc.receipt = file.file_url
+
         transaction_doc.insert(ignore_permissions=True)
         transaction_doc.save(ignore_permissions=True)
+
         frappe.response["message"] = "Transaction created successfully"
+        frappe.response["transaction_id"] = transaction_doc.name
 
     def create_transfer_transaction():
         pass
