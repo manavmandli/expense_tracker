@@ -4,6 +4,7 @@ from expense_tracker.api.models import (
     TransactionModel,
     SavingTransactionModel,
     TransferTransactionModel,
+    UpdateTransactionModel,
 )
 from expense_tracker.api.api_utils import remove_default_fields
 from frappe.handler import upload_file
@@ -15,9 +16,6 @@ class Transaction:
 
     def get_transaction(self):
         """this will get all types of transaction"""
-        if frappe.session.user == "Guest":
-            frappe.throw(_("You must be logged in first"))
-
         transaction = []
 
         # get all Transaction
@@ -51,14 +49,15 @@ class Transaction:
         frappe.response["message"] = "Transaction list get successfully"
         return transaction
 
-    def update_transaction():
-        """this will get all types of transaction"""
-        pass
+    def update_transaction(self, data: UpdateTransactionModel):
+        """this will update all types of transaction"""
+        transaction_type_map = {
+            "Transaction": "Transaction",
+            "Transfer Transaction": "Transfer Transaction",
+            "Saving Transaction": "Saving Transaction",
+        }
 
     def create_transaction(self, data: TransactionModel):
-        if frappe.session.user == "Guest":
-            frappe.throw(_("You must be logged in to create a transaction."))
-
         transaction_data = {
             "doctype": "Transaction",
             "user": frappe.session.user,
@@ -101,8 +100,62 @@ class Transaction:
         frappe.response["message"] = "Transaction created successfully"
         frappe.response["transaction_id"] = transaction_doc.name
 
-    def create_transfer_transaction():
-        pass
+    def create_transfer_transaction(self, data: TransferTransactionModel):
+        transfer_data = {
+            "doctype": "Transfer Transaction",
+            "user": frappe.session.user,
+            "amount": data.amount,
+            "transfer_type": data.transfer_type,
+            "account_from": data.account_from,
+            "account_to": data.account_to,
+            "date": data.date,
+            "location": data.location,
+            "description": data.description,
+            "recurring_transaction": data.recurring_transaction,
+            "interval": data.interval,
+            "recurring_date": data.recurring_date or None,
+            "recurring_time": data.recurring_time or None,
+        }
+        if transfer_data["recurring_transaction"]:
+            if not transfer_data.get("interval"):
+                frappe.throw(_("Interval cannot be blank for a recurring transaction"))
+            if transfer_data["interval"] == "Daily" and not transfer_data.get(
+                "recurring_time"
+            ):
+                frappe.throw(_("Recurring Time cannot be blank for Daily interval"))
 
-    def create_saving_transaction():
-        pass
+        transfer_doc = frappe.get_doc(transfer_data)
+
+        if "receipt" in frappe.request.files:
+            file = upload_file()
+            file.update(
+                {
+                    "attached_to_doctype": transfer_doc.doctype,
+                    "attached_to_name": transfer_doc.name,
+                }
+            )
+            file.save(ignore_permissions=True)
+            transfer_doc.receipt = file.file_url
+
+        transfer_doc.insert(ignore_permissions=True)
+        transfer_doc.save(ignore_permissions=True)
+
+        frappe.response["message"] = "Transfer Transaction created successfully"
+        frappe.response["transaction_id"] = transfer_doc.name
+
+    def create_saving_transaction(self, data: SavingTransactionModel):
+        saving_transaction_data = {
+            "doctype": "Saving Transaction",
+            "user": frappe.session.user,
+            "amount": data.amount,
+            "source_account": data.source_account,
+            "date": data.date,
+            "saving_goal": data.saving_goal,
+        }
+        saving_transaction_doc = frappe.get_doc(saving_transaction_data)
+
+        saving_transaction_doc.insert(ignore_permissions=True)
+        saving_transaction_doc.save(ignore_permissions=True)
+
+        frappe.response["message"] = "Saving Transaction created successfully"
+        frappe.response["transaction_id"] = saving_transaction_doc.name

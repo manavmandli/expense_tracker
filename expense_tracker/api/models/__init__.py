@@ -71,6 +71,11 @@ class TransferTransactionModel(BaseModel):
     recurring_transaction: bool
     interval: str
     recurring_date: str
+    recurring_time: str
+
+
+class UpdateTransactionModel(BaseModel):
+    transaction_id : str
 
 
 class UserSettingModel(BaseModel):
