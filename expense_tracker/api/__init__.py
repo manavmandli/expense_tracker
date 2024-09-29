@@ -102,7 +102,6 @@ endpoints = {
     "update_saving_goals": {
         "methods": {"PUT"},
         "function": SavingGoal().update_saving_goals,
-        "model": SavingGoalsModel,
         "allow_guest": False,
     },
     # Transaction End-Points
