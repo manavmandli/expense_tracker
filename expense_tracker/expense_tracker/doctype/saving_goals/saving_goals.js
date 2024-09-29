@@ -3,6 +3,6 @@
 
 frappe.ui.form.on("Saving Goals", {
   refresh(frm) {
-    frm.set_value("user", frappe.session.user);
+    
   },
 });

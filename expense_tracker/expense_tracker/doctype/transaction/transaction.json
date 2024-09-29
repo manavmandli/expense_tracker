@@ -36,7 +36,7 @@
    "fieldtype": "Link",
    "label": "User",
    "options": "User",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "section_break_uzzq",
@@ -170,7 +170,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-07 19:14:18.466669",
+ "modified": "2024-09-29 13:49:54.143771",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Transaction",

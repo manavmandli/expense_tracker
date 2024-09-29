@@ -18,7 +18,7 @@
    "fieldtype": "Link",
    "label": "User",
    "options": "User",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "section_break_pqtv",
@@ -50,7 +50,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-06 12:38:26.759799",
+ "modified": "2024-09-29 13:50:08.893678",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "Budget",

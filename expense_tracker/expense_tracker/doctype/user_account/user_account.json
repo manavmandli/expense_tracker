@@ -69,7 +69,7 @@
    "fieldtype": "Link",
    "label": "User",
    "options": "User",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "section_break_ldwb",
@@ -89,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-06 12:47:23.488946",
+ "modified": "2024-09-29 14:01:07.847071",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "User Account",
@@ -109,7 +109,10 @@
    "write": 1
   }
  ],
+ "search_fields": "account_name",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "account_name"
 }

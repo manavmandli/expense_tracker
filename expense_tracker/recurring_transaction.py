@@ -26,13 +26,13 @@ def process_transaction(
     current_time = datetime.now().time()
 
     if is_daily and current_time >= transaction_doc.time:
-        create_new_transaction(doctype, transaction_doc)
+        create_transaction(doctype, transaction_doc)
     elif (
         is_weekly
         and datetime.now().date().weekday() == transaction_doc.date.weekday()
         and current_time >= transaction_doc.time
     ):
-        create_new_transaction(doctype, transaction_doc)
+        create_transaction(doctype, transaction_doc)
     elif (
         is_monthly
         and datetime.now().day == transaction_doc.date.day
@@ -53,8 +53,5 @@ def create_transaction(doctype, transaction_doc):
     new_transaction.description = transaction_doc.description
     new_transaction.location = transaction_doc.location
     new_transaction.receipt = transaction_doc.receipt
-    new_transaction.save()
+    new_transaction.save(ignore_permission= True)
     frappe.db.commit()
-
-
-enqueue(create_recurrence)

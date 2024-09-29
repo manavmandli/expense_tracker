@@ -135,11 +135,8 @@ app_license = "mit"
 
 scheduler_events = {
     "daily": [
-        "expense_tracker.schedule_event.recurring_transaction.create_transaction"
-    ],
-    "hourly": [
-        "expense_tracker.schedule_event.recurring_transaction.create_transaction"
-    ],
+        "expense_tracker.recurring_transaction.create_recurrence"
+    ]
 }
 
 # Testing
