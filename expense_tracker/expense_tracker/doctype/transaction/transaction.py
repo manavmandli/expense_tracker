@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 
 class Transaction(Document):
-    def validate(self):
+    def after_insert(self):
         self.update_account_details()
         self.update_budget()
 

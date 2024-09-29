@@ -8,7 +8,7 @@ class SavingGoal:
     def __init__(self):
         self.user = frappe.session.user
 
-    def get_saving_goals():
+    def get_saving_goals(self):
         """Retrieve all Saving goals."""
         saving_goals = remove_default_fields(
             frappe.get_all(
