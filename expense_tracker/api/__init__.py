@@ -45,7 +45,7 @@ endpoints = {
     "get_category": {
         "methods": {"GET"},
         "function": Category().get_category,
-        "allow_guest": False,
+        "allow_guest": True,
     },
     "create_category": {
         "methods": {"POST"},
@@ -57,6 +57,11 @@ endpoints = {
     "get_user_accounts": {
         "methods": {"GET"},
         "function": UserAccount().get_user_accounts,
+        "allow_guest": False,
+    },
+    "update_user_account": {
+        "methods": {"POST"},
+        "function": UserAccount().update_user_account,
         "allow_guest": False,
     },
     "create_user_account": {
@@ -74,7 +79,6 @@ endpoints = {
     "update_budget": {
         "methods": {"PUT"},
         "function": Budget().update_budget,
-        "model": BudgetModel,
         "allow_guest": False,
     },
     "create_budget": {

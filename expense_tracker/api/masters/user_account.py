@@ -16,6 +16,18 @@ class UserAccount:
         )
         frappe.response["message"] = "User Account list get successfully"
         return user_account_doc
+    
+    def update_user_account(self, **data):
+        """Update an existing User Account"""
+        user_account_doc = frappe.get_doc("User Account", data.get("account"))
+        
+        if data.get("account_type") and data.get("account_type") in ["Bank", "Other"]:
+            user_account_doc.account_type = data.get("account_type")
+        if data.get("account_name"):
+            user_account_doc.account_name = data.get("account_name")
+            
+        user_account_doc.save(ignore_permissions=True)
+        frappe.response["message"] = "User Account updated successfully"
 
     def create_user_account(data: UserAccountModel):
         """Create a new User Account"""

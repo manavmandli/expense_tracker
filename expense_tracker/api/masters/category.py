@@ -13,12 +13,12 @@ class Category:
 
         categories = remove_default_fields(
             frappe.get_all(
-                "Category", filters={"owner": frappe.session.user}, fields=["*"]
+                "Category", fields=["*"]
             )
         )
         frappe.response["message"] = "Category list get successfully"
-        return categories
-
+        return categories        
+        
     def create_category(data: CategoryModel):
         """Create a new category with optional icon upload."""
 
