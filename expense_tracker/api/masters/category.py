@@ -19,7 +19,7 @@ class Category:
         frappe.response["message"] = "Category list get successfully"
         return categories        
         
-    def create_category(data: CategoryModel):
+    def create_category(self,data: CategoryModel):
         """Create a new category with optional icon upload."""
 
         if data.category_type in ["Expense", "Income", "Transfer"]:
