@@ -10,7 +10,7 @@ class Auth:
         self.name = name
         self.mobile_no = mobile_no
         self.email = email
-        
+
     def validate_duplicate(self):
         if frappe.db.exists("User", {"username": self.name}):
             frappe.throw(_("Username already exists"))
@@ -18,7 +18,6 @@ class Auth:
             frappe.throw(_("Email already exists"))
         if frappe.db.exists("User", {"mobile_no": self.mobile_no}):
             frappe.throw(_("Mobile no already exists"))
-            
 
     def create_account(self, data: UserModel):
         # Setting the instance attributes for use in get_user_detail
@@ -45,8 +44,18 @@ class Auth:
             )
         )
         user_doc.insert(ignore_permissions=True)
+        self.create_user_settings(data.email)
         frappe.response["message"] = "Account created successfully"
         frappe.response["user"] = data.name
+
+    def create_user_settings(self,email):
+        user_settiing_doc = frappe.get_doc(
+            dict(
+                doctype="User Settings",
+                user=email
+            )
+        )
+        user_settiing_doc.insert(ignore_permissions=True)
 
     def login(self, usr, pwd):
         login_manager = frappe.auth.LoginManager()
@@ -84,10 +93,10 @@ class Auth:
     def send_otp(self, mobile_no):
         if not mobile_no:
             frappe.throw(_("Mobile No is required"))
-            
+
         if not frappe.db.exists("User", {"mobile_no": mobile_no}):
             frappe.throw(_("Mobile no. Not exists"))
-        
+
         user_otp_doc = frappe.db.exists("User OTP", {"mobile_no": mobile_no})
         if user_otp_doc:
             frappe.db.sql("""delete from `tabUser OTP` where mobile_no=%s""", mobile_no)

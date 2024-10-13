@@ -7,7 +7,7 @@ from frappe.utils import flt
 
 
 class TransferTransaction(Document):
-    def validate(self):
+    def after_insert(self):
         self.update_account_details()
 
     def update_account_details(self):

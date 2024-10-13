@@ -17,6 +17,7 @@
    "fieldtype": "Link",
    "label": "User",
    "options": "User",
+   "read_only": 1,
    "unique": 1
   },
   {
@@ -43,7 +44,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-06 12:49:13.973551",
+ "modified": "2024-10-13 15:28:26.765933",
  "modified_by": "Administrator",
  "module": "Expense Tracker",
  "name": "User Settings",

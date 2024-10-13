@@ -116,6 +116,9 @@ class Transaction:
             "recurring_date": data.recurring_date or None,
             "recurring_time": data.recurring_time or None,
         }
+        if transfer_data.get('account_from') == transfer_data.get('account_to'):
+            frappe.throw(("from account and to account can not be same !!"))
+            
         if transfer_data["recurring_transaction"]:
             if not transfer_data.get("interval"):
                 frappe.throw(_("Interval cannot be blank for a recurring transaction"))

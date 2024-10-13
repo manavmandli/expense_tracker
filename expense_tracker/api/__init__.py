@@ -10,6 +10,7 @@ from expense_tracker.api.modules import (
 )
 from expense_tracker.api.models import (
     UserModel,
+    UserProfileModel,
     ForgetPwdModel,
     CategoryModel,
     UserAccountModel,
@@ -143,7 +144,7 @@ endpoints = {
     "update_user_profile": {
         "methods": {"PUT"},
         "function": UserProfile().update_user_profile,
-        "model": UserModel,
+        "model": UserProfileModel,
         "allow_guest": False,
     },
     # User Settings End Points

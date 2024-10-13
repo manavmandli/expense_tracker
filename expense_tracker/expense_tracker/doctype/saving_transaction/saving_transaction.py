@@ -7,7 +7,7 @@ from frappe.utils import flt
 
 
 class SavingTransaction(Document):
-    def validate(self):
+    def after_insert(self):
         self.update_account()
         self.update_saving()
 

@@ -8,6 +8,13 @@ class UserModel(BaseModel):
     password: str
 
 
+class UserProfileModel(BaseModel):
+    name: str
+    mobile_no:str
+    dob: str
+    gender: str
+
+
 class ForgetPwdModel(BaseModel):
     mobile_no: str
     otp: str

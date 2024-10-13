@@ -3,6 +3,5 @@
 
 frappe.ui.form.on("User Settings", {
   refresh(frm) {
-    frm.set_value("user", frappe.session.user);
   },
 });
